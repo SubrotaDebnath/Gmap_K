@@ -1,0 +1,24 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=42:FF:E9:90:3F:9D:22:D5:87:69:6C:74:4D:66:E4:E6:7C:08:B7:54%3Bsubrota.dhuvro.gmap
+
+    You can also add your credentials to an existing key, using these values:
+
+    Package name:
+    subrota.dhuvro.gmap
+
+    SHA-1 certificate fingerprint:
+    42:FF:E9:90:3F:9D:22:D5:87:69:6C:74:4D:66:E4:E6:7C:08:B7:54
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+  "google_maps_key"
+    string in this file.
+    demo api key = AIzaSyBDs6uia7XDMwi_nyS62-VZWAZSjJpJasM
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBDs6uia7XDMwi_nyS62-VZWAZSjJpJasM</string>
+</resources>

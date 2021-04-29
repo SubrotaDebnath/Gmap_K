@@ -8,6 +8,6 @@ class CameraAndViewport {
             .target(LatLng(23.752454104507855, 90.36467349555026))
             .bearing(0f)
             .tilt(45f)
-            .zoom(17f)
+            .zoom(16f)
             .build()
 }

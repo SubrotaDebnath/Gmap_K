@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import androidx.lifecycle.lifecycleScope
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -13,6 +14,8 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import subrota.dhuvro.gmap.misc.CameraAndViewport
 import subrota.dhuvro.gmap.misc.TypeAndStyle
 
@@ -61,6 +64,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
 
         typeAndStyle.setMapStyle(mMap, this)
+
+//        lifecycleScope.launch {
+//            delay(3000L)
+//            mMap.moveCamera(CameraUpdateFactory.zoomBy(2f))
+//            delay(3000L)
+//            mMap.moveCamera(CameraUpdateFactory.zoomBy(2f))
+//        }
 
         //mMap.setPadding(0,0,300,0)
     }

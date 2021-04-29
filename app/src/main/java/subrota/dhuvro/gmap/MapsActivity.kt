@@ -50,20 +50,31 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // Add a marker in Sydney and move the camera
         //val lareye = LatLng(23.752454104507855, 90.36467349555026)
         val lareye = LatLng(23.752454104507855, 90.36467349555026)
+        val home = LatLng(23.223679060611627, 89.40584862018646)
         mMap.addMarker(MarkerOptions().position(lareye).title("Marker in Lareye"))
-        //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lareye, 15f))
-        mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraAndViewport.lareye))
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lareye, 15f))
+        //mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraAndViewport.lareye))
         mMap.uiSettings.apply {
             isZoomControlsEnabled = true
 
             //enabled option are
-            isZoomGesturesEnabled = true
-            isScrollGesturesEnabled = true
-            isMyLocationButtonEnabled = true
-            isMapToolbarEnabled = true
+//            isZoomGesturesEnabled = true
+//            isScrollGesturesEnabled = true
+//            isMyLocationButtonEnabled = true
+//            isMapToolbarEnabled = true
         }
 
         typeAndStyle.setMapStyle(mMap, this)
+
+
+
+        lifecycleScope.launch {
+            delay(3000L)
+            //mMap.moveCamera(CameraUpdateFactory.newLatLng(home))
+            mMap.moveCamera(CameraUpdateFactory.scrollBy(200f, 100f))
+            //mMap.addMarker(MarkerOptions().position(home).title("Marker on Home"))
+        }
+
 
 //        lifecycleScope.launch {
 //            delay(3000L)

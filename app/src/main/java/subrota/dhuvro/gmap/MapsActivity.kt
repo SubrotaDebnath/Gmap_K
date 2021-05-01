@@ -70,9 +70,20 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         lifecycleScope.launch {
             delay(3000L)
+
+            //camera update
             //mMap.moveCamera(CameraUpdateFactory.newLatLng(home))
-            //mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(cameraAndViewport.jessoreBound, 0))
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(cameraAndViewport.jessoreBound.center, 10f))
+
+            //Camera bounds
+            mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(cameraAndViewport.jessoreBound, 0))
+
+            //map scrolling Restrict
+            mMap.setLatLngBoundsForCameraTarget(cameraAndViewport.jessoreBound)
+
+            //map bound and center point
+            //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(cameraAndViewport.jessoreBound.center, 10f))
+
+            //new marker title
             //mMap.addMarker(MarkerOptions().position(home).title("Marker on Home"))
         }
 

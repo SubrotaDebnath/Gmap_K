@@ -71,7 +71,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         lifecycleScope.launch {
             delay(3000L)
             //mMap.moveCamera(CameraUpdateFactory.newLatLng(home))
-            mMap.moveCamera(CameraUpdateFactory.scrollBy(200f, 100f))
+            //mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(cameraAndViewport.jessoreBound, 0))
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(cameraAndViewport.jessoreBound.center, 10f))
             //mMap.addMarker(MarkerOptions().position(home).title("Marker on Home"))
         }
 

@@ -50,7 +50,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         //val lareye = LatLng(23.752454104507855, 90.36467349555026)
         val lareye = LatLng(23.752454104507855, 90.36467349555026)
         //val home = LatLng(23.223679060611627, 89.40584862018646)
-        mMap.addMarker(MarkerOptions().position(lareye).title("Marker in Lareye"))
+        val marker = mMap.addMarker(MarkerOptions().position(lareye).title("Marker in Lareye"))
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lareye, 15f))
         //mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraAndViewport.lareye))
         mMap.uiSettings.apply {
@@ -67,8 +67,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
 
-        /*lifecycleScope.launch {
+        lifecycleScope.launch {
             delay(3000L)
+
+            //remove marker
+            marker.remove()
 
             //camera animation with out call back
             //mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraAndViewport.lareye), 2000, null)
@@ -100,7 +103,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             //new marker title
             //mMap.addMarker(MarkerOptions().position(home).title("Marker on Home"))
         }
-*/
+
 
 //        lifecycleScope.launch {
 //            delay(3000L)
@@ -111,12 +114,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         //mMap.setPadding(0,0,300,0)
 
-        onMapClick()
-        onMapLongClick()
+        /*onMapClick()
+        onMapLongClick()*/
 
     }
 
-    fun onMapClick(){
+   /* fun onMapClick(){
         mMap.setOnMapClickListener {
             Toast.makeText(this, "new marker added", Toast.LENGTH_SHORT).show()
             mMap.addMarker(MarkerOptions().position(it).title(" new Marker"))
@@ -128,7 +131,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             Toast.makeText(this, "Latitude: ${it.latitude} \nLongitude: ${it.longitude}", Toast.LENGTH_SHORT).show()
         }
     }
-
+*/
 
 
 }

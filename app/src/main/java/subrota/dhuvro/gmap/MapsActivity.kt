@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -66,7 +67,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
 
-        lifecycleScope.launch {
+        /*lifecycleScope.launch {
             delay(3000L)
 
             //camera animation with out call back
@@ -99,7 +100,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             //new marker title
             //mMap.addMarker(MarkerOptions().position(home).title("Marker on Home"))
         }
-
+*/
 
 //        lifecycleScope.launch {
 //            delay(3000L)
@@ -109,6 +110,23 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 //        }
 
         //mMap.setPadding(0,0,300,0)
+
+        onMapClick()
+        onMapLongClick()
+
+    }
+
+    fun onMapClick(){
+        mMap.setOnMapClickListener {
+            Toast.makeText(this, "new marker added", Toast.LENGTH_SHORT).show()
+            mMap.addMarker(MarkerOptions().position(it).title(" new Marker"))
+        }
+    }
+
+    fun onMapLongClick(){
+        mMap.setOnMapLongClickListener {
+            Toast.makeText(this, "Latitude: ${it.latitude} \nLongitude: ${it.longitude}", Toast.LENGTH_SHORT).show()
+        }
     }
 
 

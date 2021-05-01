@@ -2,7 +2,6 @@ package subrota.dhuvro.gmap
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.lifecycle.lifecycleScope
@@ -12,7 +11,6 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -50,7 +48,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // Add a marker in Sydney and move the camera
         //val lareye = LatLng(23.752454104507855, 90.36467349555026)
         val lareye = LatLng(23.752454104507855, 90.36467349555026)
-        val home = LatLng(23.223679060611627, 89.40584862018646)
+        //val home = LatLng(23.223679060611627, 89.40584862018646)
         mMap.addMarker(MarkerOptions().position(lareye).title("Marker in Lareye"))
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lareye, 15f))
         //mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraAndViewport.lareye))

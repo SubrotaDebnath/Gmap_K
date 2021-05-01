@@ -71,14 +71,29 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         lifecycleScope.launch {
             delay(3000L)
 
+            //camera animation with out call back
+            //mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraAndViewport.lareye), 2000, null)
+
+            //camera animation with callback
+            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraAndViewport.lareye), 2000, object : GoogleMap.CancelableCallback{
+                override fun onFinish() {
+                    //do something on Finish
+                }
+
+                override fun onCancel() {
+                    //do something on Cancel
+                }
+
+            })
+
             //camera update
             //mMap.moveCamera(CameraUpdateFactory.newLatLng(home))
 
             //Camera bounds
-            mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(cameraAndViewport.jessoreBound, 0))
+            //mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(cameraAndViewport.jessoreBound, 0))
 
             //map scrolling Restrict
-            mMap.setLatLngBoundsForCameraTarget(cameraAndViewport.jessoreBound)
+           // mMap.setLatLngBoundsForCameraTarget(cameraAndViewport.jessoreBound)
 
             //map bound and center point
             //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(cameraAndViewport.jessoreBound.center, 10f))

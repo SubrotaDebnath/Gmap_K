@@ -2,6 +2,7 @@ package subrota.dhuvro.gmap
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -12,13 +13,14 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import subrota.dhuvro.gmap.misc.CameraAndViewport
 import subrota.dhuvro.gmap.misc.TypeAndStyle
 
-class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
+class MapsActivity : AppCompatActivity(), OnMapReadyCallback , GoogleMap.OnMarkerClickListener{
 
     private lateinit var mMap: GoogleMap
     private val typeAndStyle by lazy { TypeAndStyle() }
@@ -51,6 +53,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val lareye = LatLng(23.752454104507855, 90.36467349555026)
         //val home = LatLng(23.223679060611627, 89.40584862018646)
         val marker = mMap.addMarker(MarkerOptions().position(lareye).title("Marker in Lareye"))
+        marker.tag = "IT company"
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lareye, 15f))
         //mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraAndViewport.lareye))
         mMap.uiSettings.apply {
@@ -65,9 +68,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         typeAndStyle.setMapStyle(mMap, this)
 
+        mMap.setOnMarkerClickListener(this)
 
 
-        lifecycleScope.launch {
+       /* lifecycleScope.launch {
             delay(3000L)
 
             //remove marker
@@ -102,7 +106,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
             //new marker title
             //mMap.addMarker(MarkerOptions().position(home).title("Marker on Home"))
-        }
+        }*/
 
 
 //        lifecycleScope.launch {
@@ -119,19 +123,28 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     }
 
-   /* fun onMapClick(){
-        mMap.setOnMapClickListener {
-            Toast.makeText(this, "new marker added", Toast.LENGTH_SHORT).show()
-            mMap.addMarker(MarkerOptions().position(it).title(" new Marker"))
-        }
+    override fun onMarkerClick(marker: Marker?): Boolean {
+       if (marker!= null){
+           Log.d("Marker: ", marker.tag as String)
+       }else{
+           Log.d("Marker: ", "Empty")
+       }
+        return false
     }
 
-    fun onMapLongClick(){
-        mMap.setOnMapLongClickListener {
-            Toast.makeText(this, "Latitude: ${it.latitude} \nLongitude: ${it.longitude}", Toast.LENGTH_SHORT).show()
-        }
-    }
-*/
+    /* fun onMapClick(){
+         mMap.setOnMapClickListener {
+             Toast.makeText(this, "new marker added", Toast.LENGTH_SHORT).show()
+             mMap.addMarker(MarkerOptions().position(it).title(" new Marker"))
+         }
+     }
+
+     fun onMapLongClick(){
+         mMap.setOnMapLongClickListener {
+             Toast.makeText(this, "Latitude: ${it.latitude} \nLongitude: ${it.longitude}", Toast.LENGTH_SHORT).show()
+         }
+     }
+ */
 
 
 }

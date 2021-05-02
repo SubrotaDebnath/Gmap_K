@@ -124,6 +124,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback , GoogleMap.OnMarke
     }
 
     override fun onMarkerClick(marker: Marker?): Boolean {
+
        if (marker!= null){
            Log.d("Marker: ", marker.tag as String)
        }else{

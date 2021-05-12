@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 import subrota.dhuvro.gmap.misc.CameraAndViewport
 import subrota.dhuvro.gmap.misc.TypeAndStyle
 
-class MapsActivity : AppCompatActivity(), OnMapReadyCallback , GoogleMap.OnMarkerClickListener{
+class MapsActivity : AppCompatActivity(), OnMapReadyCallback , /*GoogleMap.OnMarkerClickListener*/ GoogleMap.OnMarkerDragListener{
 
     private lateinit var mMap: GoogleMap
     private val typeAndStyle by lazy { TypeAndStyle() }
@@ -52,7 +52,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback , GoogleMap.OnMarke
         //val lareye = LatLng(23.752454104507855, 90.36467349555026)
         val lareye = LatLng(23.752454104507855, 90.36467349555026)
         //val home = LatLng(23.223679060611627, 89.40584862018646)
-        val marker = mMap.addMarker(MarkerOptions().position(lareye).title("Marker in Lareye"))
+        val marker = mMap.addMarker(MarkerOptions().position(lareye).title("Marker in Lareye").draggable(true))
         marker.tag = "IT company"
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lareye, 15f))
         //mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraAndViewport.lareye))
@@ -68,7 +68,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback , GoogleMap.OnMarke
 
         typeAndStyle.setMapStyle(mMap, this)
 
-        mMap.setOnMarkerClickListener(this)
+        mMap.setOnMarkerDragListener(this)
+
+        //mMap.setOnMarkerClickListener(this)
 
 
        /* lifecycleScope.launch {
@@ -123,7 +125,19 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback , GoogleMap.OnMarke
 
     }
 
-    override fun onMarkerClick(marker: Marker?): Boolean {
+    override fun onMarkerDragStart(p0: Marker?) {
+        Log.d("Drag", "Drag Start")
+    }
+
+    override fun onMarkerDrag(p0: Marker?) {
+        Log.d("Drag", "Dragging")
+    }
+
+    override fun onMarkerDragEnd(p0: Marker?) {
+        Log.d("Drag", "Drag End")
+    }
+
+    /*override fun onMarkerClick(marker: Marker?): Boolean {
 
        if (marker!= null){
            Log.d("Marker: ", marker.tag as String)
@@ -131,7 +145,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback , GoogleMap.OnMarke
            Log.d("Marker: ", "Empty")
        }
         return false
-    }
+    }*/
+
+
 
     /* fun onMapClick(){
          mMap.setOnMapClickListener {
